@@ -15,7 +15,11 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/clouddb01?useUnicode=true&characterEncoding=UTF8&relaxAutoCommit=true&zeroDateTimeBehavior=convertToNull
     username: root
-    password: 
+    password:
+    #driver-class-name: net.sourceforge.jtds.jdbc.Driver
+    #url: jdbc:jtds:sqlserver://10.143.114.150:1433/rfid_data
+    #username: sa
+    #password: Gr42Df234
     dbcp2:
       min-idle: 5
       initial-size: 5

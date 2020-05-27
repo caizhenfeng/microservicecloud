@@ -1,7 +1,9 @@
 package com.atguigu.springcloud.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -34,10 +36,16 @@ public class DeptController
 	}
 
 	@RequestMapping(value = "/dept/list", method = RequestMethod.GET)
+	@HystrixCommand(fallbackMethod = "processHystrix_list")
 	public List<Dept> list()
 	{
 		return service.list();
 	}
+	public List<Dept> processHystrix_list()
+	{	return  new ArrayList<Dept>();
+
+	}
+
 
 	  @RequestMapping(value = "/dept/discovery", method = RequestMethod.GET)
 	  public Object discovery()
